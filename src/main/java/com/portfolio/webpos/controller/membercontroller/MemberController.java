@@ -18,7 +18,7 @@ public class MemberController {
 
     @PostMapping(value = "/signin")
     public String signin(Member member){
-        return "redirect:index";
+        return "redirect:/";
     }
 
     @RequestMapping(value = "/findpw", method = RequestMethod.GET)
