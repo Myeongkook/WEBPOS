@@ -21,7 +21,7 @@ public class MemberRepositoryImpl implements MemberRepository {
 
     @Override
     public Member findByEmail(String email) {
-        return em.createQuery("select m from Member m where m.email =: email",Member.class)
+        return em.createQuery("select m from Member m where m.email =: email", Member.class)
                 .setParameter("email",email)
                 .getSingleResult();
     }

@@ -3,11 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="/css/login.css" rel="stylesheet" type="text/css">
+    <link href="/css/reset.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-login page
-<a href="/member/signup">SIGN UP</a>
-<a href="/member/findpw">RESET PW</a>
-<a href="/help">HELP</a>
+<div class="wrapper">
+    <div class="header">
+        <a href="/member/signup">SIGN UP</a>&#124;
+        <a href="/member/findpw">RESET PW</a>&#124;
+        <a href="/help">HELP</a>
+    </div>
+    <div class="content">
+        <div class="logo">
+            logo
+        </div>
+        <div class="form">
+            <form action="/member/signin" method="post">
+            <input type="email" id="form-id" name="email" placeholder="Email">
+            <input type="password" id="form-pw" name="password" placeholder="Password">
+            <button type="submit" class="form-btn">login</button>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>

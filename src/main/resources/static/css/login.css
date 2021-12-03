@@ -1,0 +1,88 @@
+.wrapper{
+    background: #4173B1;
+    width: 100%;
+    height: 100vh;
+}
+
+.wrapper .header{
+    position: absolute;
+    right: 0;
+    top:0;
+    color: white;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+.wrapper .header a{
+    padding-right: 5px;
+    color: white;
+    text-decoration: none;
+}
+.wrapper .header a:hover{
+    color: black;
+}
+
+.wrapper .content{
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+.wrapper .content .logo{
+    width: 250px;
+    height: 250px;
+    background: black;
+    margin-bottom: 30px;
+    margin-top: 20vh;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form{
+    display: flex;
+    width: 500px;
+    align-items: center;
+}
+
+.form input{
+    width: 420px;
+    outline: 0;
+    display: flex;
+    background: white;
+    padding: 10px 40px;
+    flex-direction: column;
+    margin-bottom: 15px;
+    border-radius: 25px;
+    border: none;
+    font-size: 20px;
+    height: 30px;
+
+}
+
+.form .form-btn{
+    border: none;
+    width: 500px;
+    background: #294B71;
+    border-radius: 25px;
+    padding: 10px 40px;
+    color: white;
+    outline: 0;
+    text-transform: uppercase;
+    letter-spacing:10px;
+    cursor: pointer;
+    font-size: 15px;
+    height: 50px;
+    font-weight: bold;
+}
+
+.form .form-btn img{
+    width: 25px;
+    height: 25px;
+    color: white;
+}
+
+
+.form .form-btn:hover{
+    background: #244263;
+}
