@@ -30,8 +30,7 @@
 .wrapper .content .logo{
     width: 250px;
     height: 250px;
-    background: black;
-    margin-bottom: 30px;
+    margin-bottom: 5px;
     margin-top: 20vh;
     color: white;
     display: flex;
@@ -39,14 +38,19 @@
     align-items: center;
 }
 
+.wrapper .content .logo img{
+    width: 100px;
+    height: 90px;
+}
+
 .form{
     display: flex;
-    width: 500px;
+    width: 380px;
     align-items: center;
 }
 
 .form input{
-    width: 420px;
+    width: 300px;
     outline: 0;
     display: flex;
     background: white;
@@ -62,7 +66,7 @@
 
 .form .form-btn{
     border: none;
-    width: 500px;
+    width: 380px;
     background: #294B71;
     border-radius: 25px;
     padding: 10px 40px;
