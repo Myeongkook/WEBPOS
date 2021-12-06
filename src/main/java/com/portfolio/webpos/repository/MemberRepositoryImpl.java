@@ -10,6 +10,7 @@ import java.util.List;
 @Repository
 public class MemberRepositoryImpl implements MemberRepository {
 
+
     @PersistenceContext
     EntityManager em;
 
@@ -22,7 +23,7 @@ public class MemberRepositoryImpl implements MemberRepository {
     @Override
     public Member findByEmail(String email) {
         return em.createQuery("select m from Member m where m.email =: email", Member.class)
-                .setParameter("email",email)
+                .setParameter("email", email)
                 .getSingleResult();
     }
 
@@ -31,4 +32,11 @@ public class MemberRepositoryImpl implements MemberRepository {
         return em.createQuery("select m from Member m", Member.class)
                 .getResultList();
     }
+
+    @Override
+    public Member findById(Long id) {
+        return em.find(Member.class, id);
+    }
+
+
 }
