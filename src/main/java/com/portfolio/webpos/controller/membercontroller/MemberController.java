@@ -27,7 +27,14 @@ public class MemberController {
 
     @PostMapping(value = "/login")
     public String signin(Member member){
-        return "redirect:/";
+        String login = memberService.login(member);
+        if(login.equals("index")){
+            return "redirect:/";
+        }else if(login.equals("auth")){
+            return "auth";
+        }else{
+            return "/login";
+        }
     }
 
     @GetMapping(value = "/findpw")

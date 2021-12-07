@@ -9,4 +9,5 @@ public interface MemberRepository {
     Member findByEmail(String email);
     List<Member> findAll();
     Member findById(Long id);
+    boolean findAuthStatus(String mail);
 }

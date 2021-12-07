@@ -37,4 +37,17 @@ public class MemberServiceImpl implements MemberService {
         mailRepository.save(new Mail(member, authCode));
         return member;
     }
+
+    @Override
+    public String login(Member member) {
+        Member byEmail = memberRepository.findByEmail(member.getEmail());
+        if(byEmail == null){
+            return "login";
+        }
+        if(memberRepository.findAuthStatus(member.getEmail())){
+            return "index";
+        }else{
+            return "auth";
+        }
+    }
 }

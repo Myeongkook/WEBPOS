@@ -43,4 +43,10 @@ public class MemberServiceImplTest {
         String result2 = passwdUtil.makePassword("12345", findByIdMember.getSalt());
         Assertions.assertThat(findByIdMember.getPassword()).isNotEqualTo(result2);
     }
+
+    @Test
+    public void findAuthStatus(){
+        boolean authStatus = memberRepository.findAuthStatus("myeongkuk01@naver.com");
+        Assertions.assertThat(authStatus).isFalse();
+    }
 }

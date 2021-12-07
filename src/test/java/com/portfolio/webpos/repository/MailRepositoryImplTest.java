@@ -31,4 +31,6 @@ public class MailRepositoryImplTest {
         mailRepository.save(new Mail(member, 1234));
 
     }
+
+
 }

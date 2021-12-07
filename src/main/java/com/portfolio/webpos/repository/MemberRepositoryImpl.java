@@ -4,6 +4,7 @@ import com.portfolio.webpos.domain.Member;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
@@ -22,9 +23,14 @@ public class MemberRepositoryImpl implements MemberRepository {
 
     @Override
     public Member findByEmail(String email) {
-        return em.createQuery("select m from Member m where m.email =: email", Member.class)
-                .setParameter("email", email)
-                .getSingleResult();
+        try {
+            return em.createQuery("select m from Member m where m.email =: email", Member.class)
+                    .setParameter("email", email)
+                    .getSingleResult();
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override
@@ -36,6 +42,14 @@ public class MemberRepositoryImpl implements MemberRepository {
     @Override
     public Member findById(Long id) {
         return em.find(Member.class, id);
+    }
+
+    @Override
+    public boolean findAuthStatus(String mail) {
+        return em.createQuery("select m from Member m where m.email =:mail", Member.class)
+                .setParameter("mail", mail)
+                .getSingleResult().isMailCertified();
+
     }
 
 
