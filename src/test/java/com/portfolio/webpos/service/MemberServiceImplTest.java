@@ -28,7 +28,7 @@ public class MemberServiceImplTest {
 
     @Test
     @Rollback(value = false)
-    public void save() throws NoSuchAlgorithmException {
+    public void save() {
         Member savedMember = memberService.signupMember(new Member("test1234", "1234"));
         Assertions.assertThat(savedMember.getEmail()).isEqualTo("test1234");
     }
