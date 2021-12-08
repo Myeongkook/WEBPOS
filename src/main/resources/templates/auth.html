@@ -2,9 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>WEB POS - 메일인증</title>
+    <link href="/css/reset.css" rel="stylesheet" type="text/css">
+    <link href="/css/auth.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/auth.css">
 </head>
 <body>
-메일인증페이지
+    <div class="wrapper">
+        <div class="logo">
+            <img src="/css/img/email.png" alt="email"/>
+        </div>
+        <div class="content">
+            <div class="form">
+                <span>
+                    가입 시 입력한 메일의 수신함을 확인해주세요 😃
+                </span>
+                <form action="/member/auth" method="post">
+                    <input type="text" id="form-code" name="code" placeholder="Code" autocomplete="off">
+                    <button type="submit" class="form-btn">Confirm</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>WEB POS - 로그인</title>
     <link href="/css/login.css" rel="stylesheet" type="text/css">
     <link href="/css/reset.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="wrapper">
@@ -19,8 +22,8 @@
         </div>
         <div class="form">
             <form action="/member/login" method="post">
-            <input type="email" id="form-id" name="email" placeholder="Email">
-            <input type="password" id="form-pw" name="password" placeholder="Password">
+            <input type="email" id="form-id" name="email" placeholder="Email" autocomplete="off">
+            <input type="password" id="form-pw" name="password" placeholder="Password" autocomplete="off">
             <button type="submit" class="form-btn">login</button>
             </form>
         </div>

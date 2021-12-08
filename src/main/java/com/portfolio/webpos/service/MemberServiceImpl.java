@@ -50,4 +50,17 @@ public class MemberServiceImpl implements MemberService {
             return "auth";
         }
     }
+
+    @Override
+    public boolean mailAuthentication(int code, String email) {
+        Member findByEmailMember = memberRepository.findByEmail(email);
+        Mail findByMemberIdMail = mailRepository.findByMemberId(findByEmailMember.getId());
+        if(findByMemberIdMail.getCode()==code){
+            memberRepository.modifyMemberAuth(findByEmailMember.getId());
+            return true;
+        }
+        return false;
+    }
+
+
 }

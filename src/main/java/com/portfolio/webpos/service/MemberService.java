@@ -7,4 +7,5 @@ import java.security.NoSuchAlgorithmException;
 public interface MemberService {
     Member signupMember(Member member);
     String login(Member member);
+    boolean mailAuthentication(int code, String email);
 }

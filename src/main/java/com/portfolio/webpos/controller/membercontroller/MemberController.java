@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.net.http.HttpRequest;
+
 @Controller
 @RequestMapping(value = "/member/*")
 @RequiredArgsConstructor
@@ -26,13 +30,16 @@ public class MemberController {
     }
 
     @PostMapping(value = "/login")
-    public String signin(Member member){
+    public String signin(Member member, HttpServletRequest request){
         String login = memberService.login(member);
+        HttpSession session = request.getSession();
+        session.setAttribute("member", member);
         if(login.equals("index")){
             return "redirect:/";
         }else if(login.equals("auth")){
             return "auth";
         }else{
+            session.invalidate();
             return "/login";
         }
     }
@@ -51,5 +58,16 @@ public class MemberController {
     public String signup(Member member){
         memberService.signupMember(member);
         return "redirect:/";
+    }
+
+    @PostMapping(value = "/auth")
+    public String authMember(HttpServletRequest request, int code){
+        System.out.println("code = " + code);
+        HttpSession session = request.getSession();
+        Member member = (Member) session.getAttribute("member");
+        if(memberService.mailAuthentication(code, member.getEmail())){
+            return "redirect:/";
+        }
+        return "auth";
     }
 }

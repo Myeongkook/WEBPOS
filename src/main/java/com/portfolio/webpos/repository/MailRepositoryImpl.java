@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Repository
 public class MailRepositoryImpl implements MailRepository{
@@ -17,4 +18,13 @@ public class MailRepositoryImpl implements MailRepository{
         em.persist(mail);
         return mail;
     }
+
+    @Override
+    public Mail findByMemberId(Long id) {
+        List<Mail> resultList = em.createQuery("select m from Mail m where m.member.id =: id", Mail.class)
+                .setParameter("id", id)
+                .getResultList();
+        return resultList.get(resultList.size()-1);
+    }
+
 }

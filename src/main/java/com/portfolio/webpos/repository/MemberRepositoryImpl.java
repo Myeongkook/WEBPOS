@@ -52,5 +52,11 @@ public class MemberRepositoryImpl implements MemberRepository {
 
     }
 
+    @Override
+    public void modifyMemberAuth(Long id) {
+        Member member = em.find(Member.class, id);
+        member.setMailCertified(true);
+    }
+
 
 }

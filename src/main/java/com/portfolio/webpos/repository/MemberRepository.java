@@ -10,4 +10,5 @@ public interface MemberRepository {
     List<Member> findAll();
     Member findById(Long id);
     boolean findAuthStatus(String mail);
+    void modifyMemberAuth(Long id);
 }
