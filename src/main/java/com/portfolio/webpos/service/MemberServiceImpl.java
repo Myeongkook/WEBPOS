@@ -44,6 +44,15 @@ public class MemberServiceImpl implements MemberService {
         if(byEmail == null){
             return "login";
         }
+        PasswdUtil passwdUtil = new PasswdUtil();
+        try {
+            String s = passwdUtil.makePassword(member.getPassword(), byEmail.getSalt());
+            if(!s.equals(byEmail.getPassword())){
+                return "login";
+            }
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
         if(memberRepository.findAuthStatus(member.getEmail())){
             return "index";
         }else{
