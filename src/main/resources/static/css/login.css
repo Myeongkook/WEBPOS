@@ -89,3 +89,10 @@
 .form .form-btn:hover{
     background: #244263;
 }
+
+.alert-id{
+    display: none;
+    color: white;
+    margin-bottom: 10px;
+    font-family: 'Jua', sans-serif;
+}

@@ -49,6 +49,13 @@ public class MemberController {
         }
     }
 
+    @GetMapping(value = "/logout")
+    public String logout(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        session.invalidate();
+        return "redirect:/";
+    }
+
     @GetMapping(value = "/findpw")
     public String findPassword(){
         return "findpw";

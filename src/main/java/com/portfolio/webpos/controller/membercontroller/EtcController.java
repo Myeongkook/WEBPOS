@@ -16,13 +16,13 @@ public class EtcController {
         return "help";
     }
 
-//    @RequestMapping(value = "/")
-//    public String index(HttpServletRequest request){
-//        HttpSession session = request.getSession();
-//        Member member = (Member) session.getAttribute("member");
-//        if(member == null){
-//            return "redirect:/member/login";
-//        }
-//        return "";
-//    }
+    @RequestMapping(value = "/")
+    public String index(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        Member member = (Member) session.getAttribute("member");
+        if(member == null){
+            return "redirect:/member/login";
+        }
+        return "index";
+    }
 }
