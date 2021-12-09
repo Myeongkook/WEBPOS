@@ -3,12 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="/css/reset.css" rel="stylesheet" type="text/css">
+    <link href="/css/signup.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<form action="/member/signup" method="post">
-    <input type="text" name="email">
-    <input type="password" name="password">
-    <button type="submit">가입</button>
-</form>
+<div class="wrapper">
+    <div class="header">
+        <a href="/member/login">login</a>&#124;
+        <a href="/help">help</a>
+    </div>
+    <div class="content">
+        <div class="logo">로고</div>
+        <form action="/member/signup" method="post">
+            <input type="text" name="email">
+            <input type="password" class="form-pw" name="password">
+            <input type="password" class="form-pw">
+            <button type="submit">SignUp</button>
+        </form>
+    </div>
+</div>
 </body>
 </html>

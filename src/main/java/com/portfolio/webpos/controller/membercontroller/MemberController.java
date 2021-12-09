@@ -25,7 +25,12 @@ public class MemberController {
 
 
     @GetMapping(value = "/login")
-    public String signin(){
+    public String signin(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        Member sessionCheckMember = (Member) session.getAttribute("member");
+        if(!(sessionCheckMember == null)){
+            return "redirect:/";
+        }
         return "login";
     }
 
