@@ -1,5 +1,6 @@
 package com.portfolio.webpos.repository;
 
+import com.portfolio.webpos.domain.Mail;
 import com.portfolio.webpos.domain.Member;
 
 import java.util.List;
@@ -11,4 +12,5 @@ public interface MemberRepository {
     Member findById(Long id);
     boolean findAuthStatus(String mail);
     void modifyMemberAuth(Long id);
+    void modifyPassword(Member member);
 }

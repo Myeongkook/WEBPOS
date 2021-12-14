@@ -17,12 +17,18 @@ public class PasswdUtil {
         return byteToString(salt);
     }
 
-    public String makePassword(String password, String salt) throws NoSuchAlgorithmException {
+    public String makePassword(String password, String salt){
         String temp = password + salt;
-        MessageDigest md = MessageDigest.getInstance("SHA-256");
-        md.update(temp.getBytes());
-        byte[] digest = md.digest();
-        return byteToString(digest);
+        MessageDigest md = null;
+        try {
+            md = MessageDigest.getInstance("SHA-256");
+            md.update(temp.getBytes());
+            byte[] digest = md.digest();
+            return byteToString(digest);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public String byteToString(byte[]bytes){

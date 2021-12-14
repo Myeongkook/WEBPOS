@@ -1,20 +1,15 @@
 package com.portfolio.webpos.controller.membercontroller;
 
-import com.portfolio.webpos.domain.Mail;
 import com.portfolio.webpos.domain.Member;
 import com.portfolio.webpos.service.MemberService;
-import com.portfolio.webpos.util.MailUtil;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.net.http.HttpRequest;
 
 @Controller
 @RequestMapping(value = "/member/*")
@@ -59,6 +54,28 @@ public class MemberController {
     @GetMapping(value = "/findpw")
     public String findPassword(){
         return "findpw";
+    }
+
+    @PostMapping(value = "/findpw")
+    public String findPassword(String email){
+        memberService.sendResetPw(email);
+        return "redirect:/";
+    }
+
+    @GetMapping(value = "/resetpw")
+    public String resetPassword(String key,HttpServletRequest request){
+        HttpSession session = request.getSession();
+        session.setAttribute("resetKey", key);
+        return "resetpw";
+    }
+
+    @PostMapping(value = "/resetpw")
+    public String resetPw(String password,HttpServletRequest request){
+        HttpSession session = request.getSession();
+        String resetKey = (String) session.getAttribute("resetKey");
+        memberService.changePw(password, resetKey);
+        session.invalidate();
+        return "redirect:/";
     }
 
     @GetMapping(value = "/signup")

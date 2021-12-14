@@ -1,5 +1,6 @@
 package com.portfolio.webpos.repository;
 
+import com.portfolio.webpos.domain.Mail;
 import com.portfolio.webpos.domain.Member;
 import org.springframework.stereotype.Repository;
 
@@ -56,6 +57,11 @@ public class MemberRepositoryImpl implements MemberRepository {
     public void modifyMemberAuth(Long id) {
         Member member = em.find(Member.class, id);
         member.setMailCertified(true);
+    }
+
+    @Override
+    public void modifyPassword(Member member) {
+        Member member1 = em.find(Member.class, member.getId());
     }
 
 

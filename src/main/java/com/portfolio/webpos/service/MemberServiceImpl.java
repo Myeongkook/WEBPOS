@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 import java.util.Random;
 
 @Service
@@ -26,13 +27,9 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public Member signupMember(Member member) {
         member.setSalt(passwdUtil.makeSalt());
-        try {
-            member.setPassword(passwdUtil.makePassword(member.getPassword(), member.getSalt()));
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
+        member.setPassword(passwdUtil.makePassword(member.getPassword(), member.getSalt()));
         int authCode = new Random().nextInt(999999);
-        mailUtil.SendMail(member.getEmail(), authCode);
+        mailUtil.sendCodeMail(member.getEmail(), authCode);
         memberRepository.save(member);
         mailRepository.save(new Mail(member, authCode));
         return member;
@@ -45,13 +42,9 @@ public class MemberServiceImpl implements MemberService {
             return "login";
         }
         PasswdUtil passwdUtil = new PasswdUtil();
-        try {
-            String s = passwdUtil.makePassword(member.getPassword(), byEmail.getSalt());
-            if(!s.equals(byEmail.getPassword())){
-                return "login";
-            }
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+        String s = passwdUtil.makePassword(member.getPassword(), byEmail.getSalt());
+        if(!s.equals(byEmail.getPassword())){
+            return "login";
         }
         if(memberRepository.findAuthStatus(member.getEmail())){
             return "index";
@@ -69,6 +62,25 @@ public class MemberServiceImpl implements MemberService {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void sendResetPw(String email) {
+        String resetMailHash = passwdUtil.makePassword(email, "cookieMail");
+        mailUtil.sendResetPwMail(email, resetMailHash);
+    }
+
+    @Override
+    public void changePw(String password, String code) {
+        List<Member> allMember = memberRepository.findAll();
+        for (Member member : allMember) {
+            String savedMail = passwdUtil.makePassword(member.getEmail(), "cookieMail");
+            if(savedMail.equals(code)){
+                Member byEmail = memberRepository.findByEmail(member.getEmail());
+                byEmail.setPassword(passwdUtil.makePassword(password, byEmail.getSalt()));
+            }
+
+        }
     }
 
 

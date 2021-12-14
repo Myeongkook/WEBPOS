@@ -1,6 +1,7 @@
 package com.portfolio.webpos.repository;
 
 import com.portfolio.webpos.domain.Mail;
+import com.portfolio.webpos.domain.Member;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -26,5 +27,6 @@ public class MailRepositoryImpl implements MailRepository{
                 .getResultList();
         return resultList.get(resultList.size()-1);
     }
+
 
 }
