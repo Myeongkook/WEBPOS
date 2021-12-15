@@ -17,7 +17,7 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String email;
 
     private String password;
@@ -27,6 +27,8 @@ public class Member {
     @Column(name = "member_mail_certified")
     @ColumnDefault("0")
     private boolean mailCertified;
+
+    private String shop;
 
     public Member(){}
 
