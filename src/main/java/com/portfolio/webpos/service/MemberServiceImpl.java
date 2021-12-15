@@ -66,7 +66,8 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public void sendResetPw(String email) {
-        String resetMailHash = passwdUtil.makePassword(email, "cookieMail");
+        Member findByEmailMember = memberRepository.findByEmail(email);
+        String resetMailHash = passwdUtil.makePassword(email, findByEmailMember.getSalt());
         mailUtil.sendResetPwMail(email, resetMailHash);
     }
 
@@ -74,8 +75,8 @@ public class MemberServiceImpl implements MemberService {
     public void changePw(String password, String code) {
         List<Member> allMember = memberRepository.findAll();
         for (Member member : allMember) {
-            String savedMail = passwdUtil.makePassword(member.getEmail(), "cookieMail");
-            if(savedMail.equals(code)){
+            String savedMailPassword = passwdUtil.makePassword(member.getEmail(), member.getSalt());
+            if(savedMailPassword.equals(code)){
                 Member byEmail = memberRepository.findByEmail(member.getEmail());
                 byEmail.setPassword(passwdUtil.makePassword(password, byEmail.getSalt()));
             }
