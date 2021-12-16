@@ -4,6 +4,7 @@ import com.portfolio.webpos.domain.Member;
 import com.portfolio.webpos.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -63,18 +64,14 @@ public class MemberController {
     }
 
     @GetMapping(value = "/resetpw")
-    public String resetPassword(String key,HttpServletRequest request){
-        HttpSession session = request.getSession();
-        session.setAttribute("resetKey", key);
+    public String resetPassword(String key, HttpServletRequest request, Model model){
+        model.addAttribute("resetKey",key);
         return "resetpw";
     }
 
     @PostMapping(value = "/resetpw")
-    public String resetPw(String password,HttpServletRequest request){
-        HttpSession session = request.getSession();
-        String resetKey = (String) session.getAttribute("resetKey");
+    public String resetPw(String password,HttpServletRequest request,String resetKey){
         memberService.changePw(password, resetKey);
-        session.invalidate();
         return "redirect:/";
     }
 

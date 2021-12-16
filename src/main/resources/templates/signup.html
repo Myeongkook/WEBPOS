@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -17,11 +17,11 @@
         <img src="/css/img/signup.png" alt="signup">
         </div>
         <form action="/member/signup" method="post">
-            <input type="text" name="email" placeholder="Email">
-            <input type="password" class="form-pw" name="password" placeholder="Password">
-            <input type="password" class="form-pw" placeholder="Password">
-            <input type="text" name="shop" placeholder="Shop">
-            <button type="submit">SignUp</button>
+            <input th:type="text" name="email" placeholder="Email">
+            <input th:type="password" class="form-pw" name="password" placeholder="Password">
+            <input th:type="password" class="form-pw" placeholder="Password">
+            <input th:type="text" name="shop" placeholder="Shop">
+            <button th:type="submit">SignUp</button>
         </form>
     </div>
 </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -8,9 +8,10 @@
 <div class="wrapper">
   <div class="content">
     <form action="/member/resetpw" method="post">
-    <input type="password" name="password">
-      <input type="password">
-      <button type="submit">재설정</button>
+        <input th:type="hidden" th:value="${resetKey}" th:name="resetKey">
+      <input th:type="password" th:name="password">
+      <input th:type="password">
+      <button th:type="submit">재설정</button>
     </form>
   </div>
 </div>
