@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.persistence.NoResultException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -71,7 +72,11 @@ public class MemberController {
 
     @PostMapping(value = "/resetpw")
     public String resetPw(String password,HttpServletRequest request,String resetKey){
-        memberService.changePw(password, resetKey);
+        try {
+            memberService.changePw(password, resetKey);
+        }catch (NullPointerException e){
+            return "resetpw";
+        }
         return "redirect:/";
     }
 

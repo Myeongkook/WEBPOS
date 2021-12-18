@@ -2,7 +2,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/css/resetpw.css">
+    <link rel="stylesheet" type="text/css" href="/css/reset.css">
+    <title>WEB POS - 암호 재설정</title>
 </head>
 <body>
 <div class="wrapper">
@@ -11,7 +13,7 @@
         <input th:type="hidden" th:value="${resetKey}" th:name="resetKey">
       <input th:type="password" th:name="password">
       <input th:type="password">
-      <button th:type="submit">재설정</button>
+      <button th:class="form-btn" th:type="submit">재설정</button>
     </form>
   </div>
 </div>

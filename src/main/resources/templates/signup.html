@@ -2,9 +2,15 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>WEB POS - 회원가입</title>
     <link href="/css/reset.css" rel="stylesheet" type="text/css">
     <link href="/css/signup.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Mukta:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="wrapper">
@@ -16,8 +22,9 @@
         <div class="logo">
         <img src="/css/img/signup.png" alt="signup">
         </div>
+        <span>메일 인증이 가능한 이메일을 입력해 주세요 😃</span>
         <form action="/member/signup" method="post">
-            <input th:type="text" name="email" placeholder="Email">
+            <input th:type="text" name="email" placeholder="Email" autocomplete="off">
             <input th:type="password" class="form-pw" name="password" placeholder="Password">
             <input th:type="password" class="form-pw" placeholder="Password">
             <input th:type="text" name="shop" placeholder="Shop">

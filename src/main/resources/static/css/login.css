@@ -2,6 +2,7 @@
     background: #4173B1;
     width: 100%;
     height: 100vh;
+    font-family: 'Mukta', sans-serif;
 }
 .wrapper .header{
     position: absolute;
@@ -60,7 +61,6 @@
     border: none;
     font-size: 20px;
     height: 30px;
-
 }
 
 .form .form-btn{

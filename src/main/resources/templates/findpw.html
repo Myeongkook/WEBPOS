@@ -2,16 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>WEB POS - 암호찾기</title>
+    <link rel="stylesheet" type="text/css" href="/css/findpw.css">
+    <link rel="stylesheet" type="text/css" href="/css/reset.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Mukta:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="wrapper">
     <div class="header">
-        <a href="/member/login">LOGIN</a>
+        <a href="/member/login">LOGIN</a>&#124;
+        <a href="/help">HELP</a>
     </div>
     <div class="content">
+        <div class="logo">
+            <img src="/css/img/pw1.png" alt="resetpw">
+        </div>
+        <span>가입 시 입력한 메일을 입력해 주세요 😃</span>
         <form action="/member/findpw" method="post">
-            <input type="email" name="email" id="form-id">
+            <input type="email" name="email" id="form-id" placeholder="Email" autocomplete="off">
             <button type="submit">confirm</button>
         </form>
     </div>
