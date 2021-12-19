@@ -21,6 +21,31 @@
     color: black;
 }
 
+.wrapper .chat-icon{
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: white;
+    padding: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: black solid 4px;
+}
+
+.wrapper .chat-icon:hover{
+    cursor: pointer;
+    background: gainsboro;
+}
+
+.wrapper .chat-icon img{
+    width: 50%;
+    height: 50%;
+}
+
 .wrapper .content{
     display: flex;
     align-items: center;
