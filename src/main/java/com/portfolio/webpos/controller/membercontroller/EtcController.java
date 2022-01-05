@@ -2,6 +2,7 @@ package com.portfolio.webpos.controller.membercontroller;
 
 import com.portfolio.webpos.domain.Member;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -24,5 +25,10 @@ public class EtcController {
             return "redirect:/member/login";
         }
         return "index";
+    }
+
+    @GetMapping("/cctv")
+    public String cctv(){
+        return "cctv";
     }
 }
